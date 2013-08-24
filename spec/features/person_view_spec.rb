@@ -46,4 +46,10 @@ describe Person, type: :feature do
     expect(page).to have_content('555-9191')
     expect(page).to_not have_content(old_number)
   end
+
+  it 'has links to delete phone numbers' do
+    person.phone_numbers.each do |phone|
+      expect(page).to have_link('delete', href: phone_number_path(phone))
+    end
+  end
 end

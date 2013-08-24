@@ -52,4 +52,13 @@ describe Person, type: :feature do
       expect(page).to have_link('delete', href: phone_number_path(phone))
     end
   end
+
+  it 'deletes a phone number' do
+    phone = person.phone_numbers.first
+    deleted_number = phone.number
+
+    first(:link, 'delete').click
+    expect(current_path).to eq(person_path(person))
+    expect(page).not_to have_content(deleted_number)
+  end
 end

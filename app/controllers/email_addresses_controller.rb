@@ -76,7 +76,7 @@ class EmailAddressesController < ApplicationController
     @email_address.destroy
 
     respond_to do |format|
-      format.html { redirect_to email_addresses_url }
+      format.html { redirect_to person_url(@email_address.person_id) }
       format.json { head :no_content }
     end
   end

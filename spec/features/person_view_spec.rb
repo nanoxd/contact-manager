@@ -83,6 +83,13 @@ describe Person, type: :feature do
       expect(current_path).to eq(new_email_address_path)
     end
 
+    it 'redirects to the person after adding an email address' do
+      page.click_link('Add email address')
+      page.fill_in('Address', with: 'me@example.com')
+      page.click_button('Create Email address')
+      expect(current_path).to eq(person_path(person))
+    end
+
   end
 
 end

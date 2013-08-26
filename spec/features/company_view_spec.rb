@@ -64,4 +64,64 @@ describe Company, type: :feature do
       expect(page).not_to have_content(deleted_number)
     end
   end
+
+  describe 'Email Addresses' do
+    before(:each) do
+      company.email_addresses.create(address: 'me@example.com')
+      company.email_addresses.create(address: 'you@example.com')
+      visit company_path(company.id)
+    end
+
+    it 'has a li for each address' do
+      company.email_addresses.each do |email_address|
+        expect(page).to have_selector('li', text: email_address.address)
+      end
+    end
+
+    it 'has an add email address link' do
+      page.click_link('Add email address')
+      expect(current_path).to eq(new_email_address_path)
+    end
+
+    it 'redirects to the company after adding an email address' do
+      page.click_link('Add email address')
+      page.fill_in('Address', with: 'me@example.com')
+      page.click_button('Create Email address')
+      expect(current_path).to eq(company_path(company))
+    end
+
+    it 'has links to edit email addresses' do
+      company.email_addresses.each do |email_address|
+        expect(page).to have_link('edit', edit_email_address_path(email_address))
+      end
+    end
+
+    it 'edits an email address' do
+      email = company.email_addresses.first
+      old_email = email.address
+
+      first(:link, 'edit').click
+      page.fill_in('Address', with: 'changed@me.com')
+      page.click_button('Update Email address')
+      expect(current_path).to eq(company_path(company.id))
+      expect(page).to have_content('changed@me.com')
+      expect(page).to_not have_content(old_email)
+    end
+
+    it 'has links to delete email addresses' do
+      company.email_addresses.each do |email_address|
+        expect(page).to have_link('delete', href: email_address_path(email_address))
+      end
+    end
+
+    it 'deletes an email address' do
+      email = company.email_addresses.first
+      deleted_email = email.address
+
+      first(:link, 'delete').click
+      expect(current_path).to eq(company_path(company))
+      expect(page).not_to have_content(deleted_email)
+    end
+
+  end
 end

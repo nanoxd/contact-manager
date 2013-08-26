@@ -23,7 +23,7 @@ describe EmailAddressesController do
   # This should return the minimal set of attributes required to create a valid
   # EmailAddress. As you add validations to EmailAddress, be sure to
   # adjust the attributes here as well.
-  let(:valid_attributes) { { "address" => "MyString", :person_id => bob.id } }
+  let(:valid_attributes) { { "address" => "MyString", :contact_id => bob.id } }
   let(:bob) { Person.create(first_name: 'Bob', last_name: 'Barker')}
 
   # This should return the minimal set of values that should be in the session

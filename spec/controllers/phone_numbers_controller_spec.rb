@@ -26,7 +26,7 @@ describe PhoneNumbersController do
   # let(:valid_attributes) { { "number" => "MyString", :person_id => 1 } }
 
   let(:bob)  { Person.create(first_name: 'Bob', last_name: 'Jones') }
-  let(:valid_attributes)  { { number: '555-5678', person_id: bob.id } }
+  let(:valid_attributes)  { { number: '555-5678', contact_id: bob.id, contact_type: 'Person' } }
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
   # PhoneNumbersController. Be sure to keep this updated too.
@@ -66,7 +66,7 @@ describe PhoneNumbersController do
   describe "POST create" do
     describe "with valid params" do
       let(:ferny) { Person.create(first_name: 'Ferny', last_name: 'Paredes')}
-      let(:valid_attributes) { {number: '555-1234', person_id: ferny.id} }
+      let(:valid_attributes) { {number: '555-1234', contact_id: ferny.id, contact_type: 'Person'} }
       it "creates a new PhoneNumber" do
         expect {
           post :create, {:phone_number => valid_attributes}, valid_session
@@ -81,7 +81,7 @@ describe PhoneNumbersController do
 
       it "redirects to the created phone_number" do
         ferny = Person.create(first_name: 'Ferny', last_name: 'Paredes')
-        valid_attributes = { number: '555-8888', person_id: ferny.id }
+        valid_attributes = { number: '555-8888', contact_id: ferny.id, contact_type: 'Person' }
         post :create, {:phone_number => valid_attributes}, valid_session
         expect(response).to redirect_to(ferny)
       end
@@ -108,7 +108,7 @@ describe PhoneNumbersController do
     describe "with valid params" do
 
       let(:bob)  { Person.create(first_name: 'Bob', last_name: 'Jones') }
-      let(:valid_attributes)  { { number: '555-5678', person_id: bob.id } }
+      let(:valid_attributes)  { { number: '555-5678', contact_id: bob.id, contact_type: 'Person' } }
 
       it "updates the requested phone_number" do
 

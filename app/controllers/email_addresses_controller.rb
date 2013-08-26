@@ -24,7 +24,7 @@ class EmailAddressesController < ApplicationController
   # GET /email_addresses/new
   # GET /email_addresses/new.json
   def new
-    @email_address = EmailAddress.new(person_id: params[:person_id])
+    @email_address = EmailAddress.new(person_id: params[:contact_id])
 
     respond_to do |format|
       format.html # new.html.erb

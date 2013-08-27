@@ -1,5 +1,5 @@
 class PeopleController < ApplicationController
-  before_filter :lookup_person, except: [:index, :new, :create]
+  before_filter :find_resource, except: [:index, :new, :create]
   # GET /people
   # GET /people.json
   def index
@@ -77,9 +77,4 @@ class PeopleController < ApplicationController
     end
   end
 
-  private
-
-   def lookup_person
-    @person = Person.find(params[:id])
-   end
 end

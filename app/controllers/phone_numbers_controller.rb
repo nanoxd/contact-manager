@@ -1,5 +1,5 @@
 class PhoneNumbersController < ApplicationController
-  before_filter :lookup_phone_number, only: [:edit, :update, :destroy]
+  before_filter :find_resource, only: [:edit, :update, :destroy]
   # GET /phone_numbers/new
   # GET /phone_numbers/new.json
   def new
@@ -56,9 +56,4 @@ class PhoneNumbersController < ApplicationController
     end
   end
 
-  private
-
-    def lookup_phone_number
-      @phone_number = PhoneNumber.find(params[:id])
-    end
 end

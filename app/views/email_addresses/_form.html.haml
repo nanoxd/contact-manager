@@ -1,7 +1,19 @@
-\%p
-\%h4 Email Addresses:
-\- email_addresses.each do |email_address|
-\%li
-\= email_address.address
-\= link_to('edit', edit_email_address_path(email_address))
-| \#{link_to('delete', email_address_path(email_address), method: :delete)}
+= form_for(@email_address) do |f|
+  - if @email_address.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(@email_address.errors.count, "error")
+        prohibited this email_address from being saved:
+      %ul
+        - @email_address.errors.full_messages.each do |msg|
+          %li= msg
+  .field
+    = f.label :address
+    %br/
+    = f.text_field :address
+  .field
+    = f.hidden_field :contact_id
+  .field
+    = f.hidden_field :contact_type
+  .actions
+    = f.submit

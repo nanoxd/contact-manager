@@ -1,7 +1,7 @@
 <div class="person">
   <p id="notice"><%= notice %></p>
 
-  <h1><%= @person.first_name + ' ' + @person.last_name %></h1>
+  <h1><%= @person %></h1>
 
 
   <%= render 'phone_numbers/phone_numbers', :phone_numbers => @person.phone_numbers %>

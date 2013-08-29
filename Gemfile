@@ -3,6 +3,8 @@ source 'https://rubygems.org'
 gem 'rails', '3.2.14'
 gem 'unicorn'
 gem 'jquery-rails'
+gem 'omniauth'
+gem 'omniauth-twitter'
 
 
 # Gems used only for assets and not required

@@ -1,5 +1,6 @@
 ContactManager::Application.routes.draw do
 
+  root to: 'companies#index'
   resources :companies
 
   resources :email_addresses, :except => [:index, :show]
@@ -9,6 +10,7 @@ ContactManager::Application.routes.draw do
   resources :people
 
   get '/auth/:provider/callback' => 'sessions#create'
+
 
 
 end

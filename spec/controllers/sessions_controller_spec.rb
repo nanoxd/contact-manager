@@ -5,8 +5,14 @@ describe SessionsController do
   before(:each) do
     Rails.application.routes.draw do
       resource :sessions, :only => [:create]
+      root to: 'site#index'
     end
   end
+
+  after(:each) do
+    Rails.application.reload_routes!
+  end
+
 
   describe '#create' do
 
@@ -33,6 +39,17 @@ describe SessionsController do
       post :create
       expect(User.count).to eq(1)
       expect(controller.current_user.id).to eq(user.id)
+    end
+
+    it 'redirects to the companies page' do
+      @request.env["omniauth.auth"] = {
+        'provider' => 'twitter',
+        'info' => {'name' => 'Charlie Allen'},
+        'uid' => 'prq987'
+      }
+      user = User.create(provider: 'twitter', uid: 'prq987', name: 'Charlie Allen')
+      post :create
+      expect(response).to redirect_to(root_path)
     end
 
   end

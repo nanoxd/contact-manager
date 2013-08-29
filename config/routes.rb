@@ -1,6 +1,6 @@
 ContactManager::Application.routes.draw do
 
-  root to: 'companies#index'
+  root to: 'site#index'
   resources :companies
 
   resources :email_addresses, :except => [:index, :show]
@@ -10,6 +10,8 @@ ContactManager::Application.routes.draw do
   resources :people
 
   get '/auth/:provider/callback' => 'sessions#create'
+  match '/login' => redirect("/auth/twitter"), as: :login
+  delete '/logout' => "sessions#destroy", as: :logout
 
 
 

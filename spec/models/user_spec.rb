@@ -1,5 +1,9 @@
 require 'spec_helper'
 
 describe User do
-  pending "add some examples to (or delete) #{__FILE__}"
+  let(:user) { User.new }
+
+  it 'has associated people' do
+    expect(user.people).to be_instance_of(Array)
+  end
 end

@@ -1,5 +1,5 @@
 class Person < ActiveRecord::Base
-  attr_accessible :first_name, :last_name
+  attr_accessible :first_name, :last_name, :user_id
   validates :first_name, :last_name, presence: true
 
   include Contact

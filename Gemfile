@@ -14,8 +14,6 @@ group :assets do
   gem 'coffee-rails', '~> 3.2.1'
   gem 'uglifier', '>= 1.0.3'
   gem 'haml'
-  gem 'compass-rails'
-  gem 'zurb-foundation', '~> 4.0.0'
 end
 
 group :development, :test do

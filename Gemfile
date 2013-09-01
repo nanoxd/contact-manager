@@ -21,6 +21,8 @@ group :development, :test do
   gem 'sqlite3'
   gem 'capybara'
   gem 'fabrication'
+  gem 'better_errors'
+  gem 'binding_of_caller'
 end
 
 group :production do

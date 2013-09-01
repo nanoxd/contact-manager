@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    user = User.find_or_create_by_auth(request.env["omniauth.auth"]).destroy
+    session[:user_id] = nil
     redirect_to root_path, notice: "You have been logged out"
   end
 end

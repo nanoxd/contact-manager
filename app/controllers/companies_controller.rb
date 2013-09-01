@@ -3,7 +3,7 @@ class CompaniesController < ApplicationController
   # GET /companies
   # GET /companies.json
   def index
-    @companies = Company.all
+    @companies = current_user.companies
 
     respond_to do |format|
       format.html # index.html.erb
@@ -77,5 +77,11 @@ class CompaniesController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  private
+
+    def lookup_company
+      @company = current_user.people.find(params[:id])
+    end
 
 end

@@ -3,13 +3,15 @@ require 'capybara/rails'
 require 'capybara/rspec'
 
 describe Person, type: :feature do
-  let(:person) { Person.create(first_name: 'Ferny', last_name: 'Paredes') }
+  let(:person) { Fabricate(:person) }
+  let(:user)   { person.user }
 
   describe 'Phone numbers' do
 
     before(:each) do
       person.phone_numbers.create(number: '555-1234')
       person.phone_numbers.create(number: '555-1233')
+      login_as(user)
       visit person_path(person)
     end
 
@@ -69,6 +71,7 @@ describe Person, type: :feature do
     before(:each) do
       person.email_addresses.create(address: 'me@example.com')
       person.email_addresses.create(address: 'you@example.com')
+      login_as(user)
       visit person_path(person)
     end
 

@@ -55,7 +55,8 @@ describe SessionsController do
   end
 
   describe '#delete' do
-    before(:each) do
+
+    it 'deletes a user' do
       @request.env["omniauth.auth"] = {
         'provider' => 'twitter',
         'info' => {'name' => 'Charlie Allen'},
@@ -63,11 +64,9 @@ describe SessionsController do
       }
 
       user = User.create(provider: 'twitter', uid: 'prq987', name: 'Charlie Allen')
-    end
 
-    it 'deletes a user' do
       delete :destroy
-      expect(User.count).to eq(0)
+      expect(controller.current_user).to be_nil
     end
 
   end

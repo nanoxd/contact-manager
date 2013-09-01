@@ -1,5 +1,5 @@
 class Company < ActiveRecord::Base
-  attr_accessible :name
+  attr_accessible :name, :user_id
   validates :name, presence: true
   include Contact
 

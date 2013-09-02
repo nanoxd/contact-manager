@@ -24,7 +24,7 @@ class CompaniesController < ApplicationController
   # GET /companies/new
   # GET /companies/new.json
   def new
-    @company = Company.new
+    @company = Company.new(user_id: session[:user_id])
 
     respond_to do |format|
       format.html # new.html.erb

@@ -1,7 +1,8 @@
 require 'spec_helper'
 
 describe Company do
-  let(:company) { Company.new(name: 'Compania') }
+  let(:user) { Fabricate(:user) }
+  let(:company) { Company.new(name: 'Compania', user_id: user.id) }
 
   it 'is valid' do
     expect(company).to be_valid

@@ -5,6 +5,7 @@ gem 'unicorn'
 gem 'jquery-rails'
 gem 'omniauth'
 gem 'omniauth-twitter'
+gem 'simple_form'
 
 
 # Gems used only for assets and not required

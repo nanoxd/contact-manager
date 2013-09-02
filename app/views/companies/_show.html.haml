@@ -1,0 +1,18 @@
+.panel.panel-default
+  .panel-heading.text-center Companies
+
+  %table.table
+    %tr
+      %th Name
+      %th.pull-right Actions
+
+    - current_user.companies.each do |company|
+      %tr
+        %td= company
+        %td
+          .btn-group.pull-right
+            = link_to 'Show', company, class: 'btn btn-success btn-sm'
+            = link_to 'Edit', edit_company_path(company), class: 'btn btn-default btn-sm'
+            = link_to 'Destroy', company, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-sm'
+
+  %br

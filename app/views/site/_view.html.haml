@@ -2,3 +2,7 @@
 
 
 = render 'companies/show'
+
+.btn-group.pull-right
+  = link_to 'Add Company', new_company_path, method: :get, class: 'btn btn-default'
+  = link_to 'Add Person', new_person_path, method: :get, class: 'btn btn-default'

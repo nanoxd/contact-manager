@@ -29,6 +29,10 @@ build:
             code: bundle exec rake db:migrate RAILS_ENV=test
 
         - script:
+            name: Prepare test db
+            code: bundle exec rake db:test:prepare
+
+        - script:
             name: rspec
             code: bundle exec rspec
 

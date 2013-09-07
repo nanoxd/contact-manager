@@ -1,8 +1,7 @@
 %h1
   Editing #{@company}
+
 = render 'form'
-%ul.actions
-  %li
-    = link_to 'Show', @company
-  %li
-    = link_to 'Back', companies_path
+
+= link_to 'Show', @company, class: 'btn btn-default'
+= link_to 'Back', companies_path, class: 'btn btn-default'

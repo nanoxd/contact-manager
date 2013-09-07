@@ -7,11 +7,10 @@
       %ul
         - @company.errors.full_messages.each do |msg|
           %li= msg
-  .form-control
-    = f.label :name, class: 'form-control'
-    %br/
-  .form-control.col-lg-10
-    = f.text_field :name
+  .form-group
+    = f.label :name
+    = f.text_field :name, class: 'form-control'
+  .form-group
     = f.hidden_field :user_id
-  .form-group.col-lg-offset-2.col-lg-10
-    = f.submit "Create Company", class: 'btn btn-default'
+  .form-group.pull-right
+    = f.submit "Create Company", class: 'btn btn-success'

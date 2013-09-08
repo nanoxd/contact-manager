@@ -1,14 +1,16 @@
 .company
-  %h1= @company
+  %h3.text-center= @company
   %p#notice= notice
   = render 'phone_numbers/phone_numbers', :phone_numbers => @company.phone_numbers
   = render 'email_addresses/email_address', :email_addresses => @company.email_addresses
-  %ul.actions
-    %li
-      = link_to 'Add phone number', new_phone_number_path(contact_id: @company.id, contact_type: 'Company')
-    %li
-      = link_to 'Add email address', new_email_address_path(contact_id: @company.id, contact_type: 'Company')
-    %li
-      = link_to 'Edit', edit_company_path(@company)
-    %li
-      = link_to 'Back', companies_path
+  %br
+.btn-group.pull-right
+  %button.btn.btn-default.dropdown-toggle
+    Add
+  %ul.dropdown-menu
+    %li= link_to 'Add phone number', new_phone_number_path(contact_id: @company.id, contact_type: 'Company')
+    %li= link_to 'Add email address', new_email_address_path(contact_id: @company.id, contact_type: 'Company')
+
+.btn-group.pull-left
+  = link_to 'Edit', edit_company_path(@company), class: 'btn btn-default'
+  = link_to 'Back', companies_path, class: 'btn btn-default'

@@ -1,0 +1,25 @@
+<div class="company">
+  <h3 class='text-center'><%= @company %></h3>
+  <p id='notice'>
+    <%= notice %>
+  </p>
+
+  <%= render 'phone_numbers/phone_numbers', phone_numbers: @company.phone_numbers %>
+  <%= render 'email_addresses/email_address', email_addresses: @company.email_addresses %>
+  <br />
+
+  <div class="btn-group pull-right">
+    <button type='button' class='btn btn-success dropdown-toggle' data-toggle="dropdown">
+      Add <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu" role="menu">
+      <li><%= link_to 'Phone Number', new_phone_number_path(contact_id: @company.id, contact_type: 'Company') %></li>
+      <li><%= link_to 'Email Address', new_email_address_path(contact_id: @company.id, contact_type: 'Company') %></li>
+    </ul>
+  </div>
+
+  <div class="btn-group pull-left">
+    <%= link_to 'Edit', edit_company_path(@company), class: 'btn btn-default' %>
+    <%= link_to 'Back', companies_path, class: 'btn btn-default' %>
+  </div>
+</div>

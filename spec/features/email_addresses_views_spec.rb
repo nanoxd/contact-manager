@@ -16,7 +16,7 @@ describe EmailAddress, type: :feature do
 
     it "shows a company's name in the title" do
       visit company_path(company)
-      page.click_link('Add email address')
+      page.click_link('Email Address')
       expect(page).to have_selector("h1", text: "#{company.name}")
     end
 

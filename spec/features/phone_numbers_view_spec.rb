@@ -16,7 +16,7 @@ describe PhoneNumber, type: :feature do
 
     it "shows a company's name in the title" do
       visit company_path(company)
-      page.click_link('Add phone number')
+      page.click_link('Phone Number')
       expect(page).to have_selector("h1", text: "#{company.name}")
     end
 

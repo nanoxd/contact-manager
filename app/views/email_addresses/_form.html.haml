@@ -1,19 +1,17 @@
 = form_for(@email_address) do |f|
   - if @email_address.errors.any?
-    #error_explanation
-      %h2
-        = pluralize(@email_address.errors.count, "error")
-        prohibited this email_address from being saved:
-      %ul
-        - @email_address.errors.full_messages.each do |msg|
-          %li= msg
-  .field
+    .alert.alert-danger
+      = pluralize(@email_address.errors.count, "error")
+      prohibited this email_address from being saved:
+
+      - @email_address.errors.full_messages.each do |msg|
+        %li= msg
+  .form-group
     = f.label :address
     %br/
-    = f.text_field :address
-  .field
-    = f.hidden_field :contact_id
-  .field
+    = f.text_field :address, class: 'form-control'
+
+    = f.hidden_field :contact_id, class: 'form-control'
     = f.hidden_field :contact_type
-  .actions
-    = f.submit
+  .form-group.pull-right
+    = f.submit class: 'btn btn-success'

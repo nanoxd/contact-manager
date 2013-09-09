@@ -22,11 +22,11 @@ describe Company, type: :feature do
     end
 
     it 'has a link to add a new phone number' do
-      expect(page).to have_link('Add phone number', href: new_phone_number_path(contact_id: company.id, contact_type: 'Company'))
+      expect(page).to have_link('Phone Number', href: new_phone_number_path(contact_id: company.id, contact_type: 'Company'))
     end
 
     it 'adds a new phone number' do
-      page.click_link('Add phone number')
+      page.click_link('Phone Number')
       page.fill_in('Number', with: '555-8888')
       page.click_button('Create Phone number')
       expect(current_path).to eq(company_path(company))
@@ -82,12 +82,12 @@ describe Company, type: :feature do
     end
 
     it 'has an add email address link' do
-      page.click_link('Add email address')
+      page.click_link('Email Address')
       expect(current_path).to eq(new_email_address_path)
     end
 
     it 'redirects to the company after adding an email address' do
-      page.click_link('Add email address')
+      page.click_link('Email Address')
       page.fill_in('Address', with: 'me@example.com')
       page.click_button('Create Email address')
       expect(current_path).to eq(company_path(company))
